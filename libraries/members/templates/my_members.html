@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'libraries/members/templates/my_members.css' %}">
+    <title>Member Login</title>
+</head>
+<body>
+    <h2>Find Member Details</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+          <label for="member_id">Member ID</label>
+          {{ form.mid }}
+          {% if form.mid.errors %}
+              <span class="error">*</span>
+          {% endif %}
+        </div>  
+        <button type="submit">Search</button>
+    </form>
+
+    {% if member %}
+        <h3>Member Details</h3>
+        <p><strong>Name:</strong> {{ member.mid }}</p>
+        <p><strong>Address:</strong> {{ member.mname }}</p>
+        <p><strong>Phone:</strong> {{ member.mphone }}</p>
+        <p><strong>Address:</strong> {{ member.maddress}}</p>
+        <p><strong>Mem:</strong> {{ member.membership_type}}</p>
+
+        <h3>Loans</h3>
+        <table border = "1">
+          <thead>
+            <tr>
+              <th>Book ID</th>
+              <th>Book Title</th>
+              <th>Book Genre</th>
+              <th>Book Year</th>
+              <th>Library Branch ID</th>
+              <th>Library Branch</th>
+              <th>Library Branch Address</th>
+              <th>Loan Date</th>
+              <th>Return Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for x in loans%}
+              <tr>
+                <td><a href = "{% url 'book_availability' x.copyid.bid.pk %}">{{x.copyid.bid.pk}}</a></td>
+                <td>{{x.copyid.bid.title}}</td>
+                <td>{{x.copyid.bid.genre}}</td>
+                <td>{{x.copyid.bid.year}}</td>
+                <td>{{x.copyid.lid.lid}}</td>
+                <td>{{x.copyid.lid.lname}}</td>
+                <td>{{x.copyid.lid.laddress}}</td>
+                <td>{{x.loandate}}</td>
+                <td>{{x.returndate}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>    
+    {% endif %}
+</body>
+</html>

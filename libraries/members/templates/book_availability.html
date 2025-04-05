@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>{{ book.title }} - Book Details</title>
+</head>
+<body>
+    <h2>{{ book.title }}</h2>
+    <p><strong>Genre:</strong> {{ book.genre }}</p>
+    <p><strong>Year:</strong> {{ book.year }}</p>
+
+    <h3>Available Copies</h3>
+    <table border = "1">
+        <thead>
+            <tr>
+                <th>Library Branch</th>
+                <th>Number of Available Copies</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for x in available%}
+                <tr>
+                    <td>{{x.lid__lname}}</td>
+                    <td>{{x.copy_count}}</td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>  
+    
+</body>
+</html>
