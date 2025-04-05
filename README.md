@@ -1,5 +1,5 @@
 # Odette Kuehn Resume
-## Django Individual Assignment
+## Django Assignment
 
 - Uses Django templates, HTML, CSS
 
