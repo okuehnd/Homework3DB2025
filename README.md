@@ -5,10 +5,10 @@
 
 ## File Structure
 ```
-odkueResume #Django Project
-│──odkueResume #Django App
-  │──odkueResume #main App files
-  │──pages #resume page
+Homework3 #Django Project
+│──libraries #Django App
+  │──libraries #main App files
+  │──members #members page
     │──migrations
     │──static/css # contains style page and jpegs
     │──templates #html file for resume
